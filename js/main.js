@@ -39,5 +39,30 @@ menu.addEventListener('click', () => {
 //     );
 // }
 
+function sendmail(){
+    var Name = $('#name').val();
+    var email = $('#email').val();
+    var phone = $('#phone').val();
+    var  message= $('#message').val();
 
+    var Body = 'Name: ' +Name+'<br>Email: '+email+ '<br>Phone: '+phone+'<br>Message: '+message;
+
+Email.send({
+    SecureToken : "087a8086-3f21-47d8-9da8-4563c3487c4a",
+    To: 'jpoonamk07@gmail.com',
+    From: "poonambhilare758@gmail.com",
+    Subject: "New mail on contact form:"+Name,
+    Body: Body
+}).then(
+    message =>{
+        if(message=='OK'){
+            alert("Your email has been send. thank you for connecting.");
+        }
+        else{
+            console.error(message);
+            alert('There is error at sending message.')
+        }
+    }
+);
+}
 
